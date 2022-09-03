@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/imdario/mergo"
+	"github.com/zsmartex/mergo"
 )
 
 type structWithTime struct {
@@ -51,8 +51,8 @@ func TestOverwriteZeroSrcTime(t *testing.T) {
 		t.FailNow()
 	}
 
-	if !dst.Birth.IsZero() {
-		t.Errorf("dst should have been overwritten: dst.Birth(%v) != now(%v)", dst.Birth, now)
+	if dst.Birth.IsZero() {
+		t.Errorf("dst have been overwritten: dst.Birth(%v) != now(%v)", dst.Birth, now)
 	}
 }
 

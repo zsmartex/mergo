@@ -56,7 +56,7 @@ func isEmptyValue(v reflect.Value) bool {
 	case reflect.Invalid:
 		return true
 	}
-	return false
+	return reflect.DeepEqual(v.Interface(), reflect.Zero(v.Type()).Interface())
 }
 
 func resolveValues(dst, src interface{}) (vDst, vSrc reflect.Value, err error) {

@@ -44,6 +44,7 @@ type Config struct {
 	TypeCheck                    bool
 	overwriteWithEmptyValue      bool
 	overwriteSliceWithEmptyValue bool
+	overwriteOnlyEmptyValue      bool
 	sliceDeepCopy                bool
 	debug                        bool
 }
@@ -60,6 +61,7 @@ func deepMerge(dst, src reflect.Value, visited map[uintptr]*visit, depth int, co
 	typeCheck := config.TypeCheck
 	overwriteWithEmptySrc := config.overwriteWithEmptyValue
 	overwriteSliceWithEmptySrc := config.overwriteSliceWithEmptyValue
+	overwriteOnlyEmptyDst := config.overwriteOnlyEmptyValue
 	sliceDeepCopy := config.sliceDeepCopy
 
 	if !src.IsValid() {
@@ -95,7 +97,7 @@ func deepMerge(dst, src reflect.Value, visited map[uintptr]*visit, depth int, co
 				}
 			}
 		} else {
-			if dst.CanSet() && (isReflectNil(dst) || overwrite) && (!isEmptyValue(src) || overwriteWithEmptySrc) {
+			if dst.CanSet() && (isReflectNil(dst) || overwrite || overwriteOnlyEmptyDst && isEmptyValue(dst)) && (!isEmptyValue(src) || overwriteWithEmptySrc || overwriteOnlyEmptyDst && isEmptyValue(dst)) {
 				dst.Set(src)
 			}
 		}
@@ -319,6 +321,11 @@ func WithOverride(config *Config) {
 func WithOverwriteWithEmptyValue(config *Config) {
 	config.Overwrite = true
 	config.overwriteWithEmptyValue = true
+}
+
+// WithOverwriteOnlyEmptyValue will make merge override only empty dst attributes with non empty src attributes values.
+func WithOverwriteOnlyEmptyValue(config *Config) {
+	config.overwriteOnlyEmptyValue = true
 }
 
 // WithOverrideEmptySlice will make merge override empty dst slice with empty src slice.

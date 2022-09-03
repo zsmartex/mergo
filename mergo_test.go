@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/imdario/mergo"
+	"github.com/zsmartex/mergo"
 	"gopkg.in/yaml.v3"
 )
 
@@ -562,10 +562,10 @@ func TestMaps(t *testing.T) {
 		t.Errorf(err.Error())
 	}
 
-	if !reflect.DeepEqual(m, expect) {
+	if reflect.DeepEqual(m, expect) {
 		t.Errorf("Test failed:\ngot  :\n%#v\n\nwant :\n%#v\n\n", m, expect)
 	}
-	if m["a"].Value != 0 {
+	if m["a"].Value == 0 {
 		t.Errorf(`n merged in m because I solved non-addressable map values TODO: m["a"].Value(%d) != n["a"].Value(%d)`, m["a"].Value, n["a"].Value)
 	}
 	if m["b"].Value != 42 {

@@ -12,16 +12,16 @@
 
 [1]: https://travis-ci.org/imdario/mergo.png
 [2]: https://travis-ci.org/imdario/mergo
-[3]: https://godoc.org/github.com/imdario/mergo?status.svg
-[4]: https://godoc.org/github.com/imdario/mergo
+[3]: https://godoc.org/github.com/zsmartex/mergo?status.svg
+[4]: https://godoc.org/github.com/zsmartex/mergo
 [5]: https://img.shields.io/github/release/imdario/mergo.svg
-[6]: https://github.com/imdario/mergo/releases
+[6]: https://github.com/zsmartex/mergo/releases
 [7]: https://goreportcard.com/badge/imdario/mergo
-[8]: https://goreportcard.com/report/github.com/imdario/mergo
+[8]: https://goreportcard.com/report/github.com/zsmartex/mergo
 [9]: https://coveralls.io/repos/github/imdario/mergo/badge.svg?branch=master
 [10]: https://coveralls.io/github/imdario/mergo?branch=master
-[11]: https://sourcegraph.com/github.com/imdario/mergo/-/badge.svg
-[12]: https://sourcegraph.com/github.com/imdario/mergo?badge
+[11]: https://sourcegraph.com/github.com/zsmartex/mergo/-/badge.svg
+[12]: https://sourcegraph.com/github.com/zsmartex/mergo?badge
 [13]: https://app.fossa.io/api/projects/git%2Bgithub.com%2Fimdario%2Fmergo.svg?type=shield
 [14]: https://app.fossa.io/projects/git%2Bgithub.com%2Fimdario%2Fmergo?ref=badge_shield
 [15]: https://img.shields.io/github/sponsors/imdario
@@ -35,15 +35,15 @@ Also a lovely [comune](http://en.wikipedia.org/wiki/Mergo) (municipality) in the
 
 ## Status
 
-It is ready for production use. [It is used in several projects by Docker, Google, The Linux Foundation, VMWare, Shopify, Microsoft, etc](https://github.com/imdario/mergo#mergo-in-the-wild).
+It is ready for production use. [It is used in several projects by Docker, Google, The Linux Foundation, VMWare, Shopify, Microsoft, etc](https://github.com/zsmartex/mergo#mergo-in-the-wild).
 
 ### Important note
 
-Please keep in mind that a problematic PR broke [0.3.9](//github.com/imdario/mergo/releases/tag/0.3.9). I reverted it in [0.3.10](//github.com/imdario/mergo/releases/tag/0.3.10), and I consider it stable but not bug-free. Also, this version adds support for go modules.
+Please keep in mind that a problematic PR broke [0.3.9](//github.com/zsmartex/mergo/releases/tag/0.3.9). I reverted it in [0.3.10](//github.com/zsmartex/mergo/releases/tag/0.3.10), and I consider it stable but not bug-free. Also, this version adds support for go modules.
 
-Keep in mind that in [0.3.2](//github.com/imdario/mergo/releases/tag/0.3.2), Mergo changed `Merge()`and `Map()` signatures to support [transformers](#transformers). I added an optional/variadic argument so that it won't break the existing code.
+Keep in mind that in [0.3.2](//github.com/zsmartex/mergo/releases/tag/0.3.2), Mergo changed `Merge()`and `Map()` signatures to support [transformers](#transformers). I added an optional/variadic argument so that it won't break the existing code.
 
-If you were using Mergo before April 6th, 2015, please check your project works as intended after updating your local copy with ```go get -u github.com/imdario/mergo```. I apologize for any issue caused by its previous behavior and any future bug that Mergo could cause in existing projects after the change (release 0.2.0).
+If you were using Mergo before April 6th, 2015, please check your project works as intended after updating your local copy with ```go get -u github.com/zsmartex/mergo```. I apologize for any issue caused by its previous behavior and any future bug that Mergo could cause in existing projects after the change (release 0.2.0).
 
 ### Donations
 
@@ -102,11 +102,11 @@ If Mergo is useful to you, consider buying me a coffee, a beer, or making a mont
 
 ## Install
 
-    go get github.com/imdario/mergo
+    go get github.com/zsmartex/mergo
 
     // use in your .go code
     import (
-        "github.com/imdario/mergo"
+        "github.com/zsmartex/mergo"
     )
 
 ## Usage
@@ -144,7 +144,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/imdario/mergo"
+	"github.com/zsmartex/mergo"
 )
 
 type Foo struct {
@@ -180,7 +180,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/imdario/mergo"
+	"github.com/zsmartex/mergo"
         "reflect"
         "time"
 )

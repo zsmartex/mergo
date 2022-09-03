@@ -3,7 +3,7 @@ package mergo_test
 import (
 	"testing"
 
-	"github.com/imdario/mergo"
+	"github.com/zsmartex/mergo"
 )
 
 type PrivateSliceTest66 struct {

@@ -3,7 +3,8 @@ package mergo_test
 import (
 	"testing"
 
-	"github.com/imdario/mergo"
+	"github.com/shopspring/decimal"
+	"github.com/zsmartex/mergo"
 )
 
 type inner struct {
@@ -88,5 +89,29 @@ func TestV039Issue146(t *testing.T) {
 	}
 	if dst.B["foo"].D == nil {
 		t.Errorf("expected %v, got nil", &s2)
+	}
+}
+
+func TestDecimal(t *testing.T) {
+	type Test struct {
+		Amount int
+		Price  decimal.Decimal
+	}
+
+	d := Test{
+		Amount: 4,
+	}
+
+	d2 := Test{
+		Price: decimal.NewFromFloat(1.0),
+	}
+	mergo.Merge(&d, d2, mergo.WithOverwriteOnlyEmptyValue)
+
+	if d.Amount != 4 {
+		t.Errorf("expected Amount: %d, got %d", 4, d.Amount)
+	}
+
+	if d.Price.String() != "1" {
+		t.Errorf("expected Price: %s, got %s", "1", d.Price.String())
 	}
 }
